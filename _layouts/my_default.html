@@ -1,0 +1,29 @@
+---
+layout: "default"
+---
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet">
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<style>
+    .MathJax 
+    { 
+        font-size: 1em !important;
+        padding-left: 0.2em;
+        padding-right: 0.2em;
+    }
+</style>
+<div dir=rtl>
+    <div style="font-family: 'Arimo', sans-serif ; line-height: 170%">
+    {{ content }}
+    </div>
+</div>

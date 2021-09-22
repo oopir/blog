@@ -34,6 +34,22 @@ theme: minima
 plugins:
   - jekyll-feed
 
+
+defaults:
+  -
+    scope:
+        path: ""
+        type: "post"
+    values:
+        # layout: "my_post"
+        permalink: /:categories/:title.html
+    scope:
+        path: ""
+    values:
+        layout: my_default
+
+
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
