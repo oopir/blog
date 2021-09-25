@@ -84,6 +84,29 @@ $$
 &nbsp;  
 
 &nbsp;  
+בשביל לתרגל, אתן עוד כמה דוגמאות לפונקציות והנגזרות החלקיות שלהן:
+
+$$
+f(x,y)=x+y\,\Longrightarrow\,f_{x}(x,y)=1,f_{y}(x,y)=1
+$$
+
+
+
+$$
+f(x,y)=x\cdot y\,\Longrightarrow\,f_{x}(x,y)=y,f_{y}(x,y)=x
+$$
+
+
+
+$$
+f(x,y)=x^{y}\,\Longrightarrow\,f_{x}(x,y)=y\cdot x^{y-1},f_{y}(x,y)=x^{y}\cdot ln(x)
+$$
+
+
+&nbsp;  
+
+
+
 כמובן שבאופן דומה ניתן לחשב גם נגזרת חלקית לפי <strong>$$y$$</strong>,
 ובאופן כללי עבור פונקציה $$f:\mathbb{R}^{n}\rightarrow\mathbb{R}$$
 ניתן לחשב את $$f_{x_{i}}$$ (וכמות הפרמטרים תהיה $$n-1$$).
