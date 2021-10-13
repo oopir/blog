@@ -72,9 +72,7 @@ $$
 
 העבודה שנעשה עבור סכום פונקציות תהווה "תבנית"
 שאיתה נפתור גם את שאר המקרים בקלות. לכן אכתוב את חלק זה בפירוט ויסודיות,
-ואני ממליץ לעבור עליו <strong>פעמיים</strong> לפני שממשיכים למקרים האחרים.
-אני ממליץ גם לרשום בצד את ההגדרה של כל פונקציית עזר שניצור, כי חלק
-מהמעברים מבלבלים.
+ואני ממליץ לעבור עליו פעמיים לפני שממשיכים למקרים האחרים.
 
 
 יהיו $$f,g:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}$$. נעבוד ב-3
@@ -163,8 +161,9 @@ $$
 
 
 נעבור להביע את $$Dp\left(q_{i}(x)\right)$$ (זכרו - פה $$q_{i}(x)$$
-מסמלת נקודה, לא פונקציה). עכשיו נוכל ממש לפרט, כי $$p$$ מנוסחת
-במפורשות ולא תלויה ב-$$f/g$$. הנגזרות החלקיות של $$p$$ הן $$\frac{\partial p}{\partial x_{1}}(a)=1\,,\,\frac{\partial p}{\partial x_{2}}(a)=1$$,
+מסמלת נקודה ספציפית, שעבורה נבטא את הדיפרנציאל). עכשיו נוכל ממש לפרט,
+כי $$p$$ מנוסחת במפורשות ולא תלויה ב-$$f$$ או $$g$$. הנגזרות
+החלקיות של $$p$$ הן $$\frac{\partial p}{\partial x_{1}}(a)=1\,,\,\frac{\partial p}{\partial x_{2}}(a)=1$$,
 ולכן נקבל:
 
 $$
@@ -239,8 +238,7 @@ $$
 
 
 &nbsp;  
-מסקנה: הדיפרנציאל של סכום פונקציות הוא סכום הדיפרנציאלים! אם עד לפה
-הבנתם, נמשיך הלאה.
+מסקנה: הדיפרנציאל של סכום פונקציות הוא סכום הדיפרנציאלים!
 &nbsp;  
 
 &nbsp;  
@@ -252,7 +250,7 @@ $$
 1 & -1
 \end{bmatrix}
 $$.
-אם תעברו על החלקים האחרונים עם המטריצה החדשה, תראו שמתקיים $$D(f-g)(x)=Df(x)-Dg(x)$$.
+אם תעברו על החלקים האחרונים עם המטריצה החדשה, תראו שמתקיים $$D(f+g)(x)=Df(x)-Dg(x)$$.
 &nbsp;  
 
 &nbsp;  
@@ -407,83 +405,174 @@ $$
 <br>
 <h2>איך מוכיחים את כלל השרשרת</h2>
 
-נראה את הנדרש ע"י ההגדרה הבאה של הנגזרת:
+<strong>הקדמה:</strong> לציין שאת ההוכחה לכלל השרשרת לקחתי מהספר $$Multivariable\,Calculus\,(George\,Cain\,\&\,James\,Herod)$$
+&nbsp;  
+
+&nbsp;  
+בגרסה של פונקציות $$f:\mathbb{R}\rightarrow\mathbb{R}$$, הרעיון
+מאחורי ההוכחה די פשוט: ע"י הכפלה וחלוקה בביטוי $$g(a+h)-g(a)$$
+נקבל: 
 
 $$
-f(g(x+h))-f(g(x))\,=\,\left(Df(g(x))\circ Dg(x)\right)\cdot h+o(h)
-$$
-
-($$f$$ דיפרנציאבילית בנקודה $$g(x)$$, לכן עבור $$h$$ קטן
-מספיק היא אכן מוגדרת ב--$$g(x+h)$$. ניזכר ש--$$g(x+h)$$ מוגדר
-כי $$g$$ גזירה ב--$$x$$ ומכך רציפה ב--$$x$$).
-
-
-הדיפרנציאביליות של $$f$$ ב--$$g(x)$$ אומרת: 
-
-$$
-f(g(x)+k)-f(g(x))\,=\,Df(g(x))\cdot k+o(k)
-$$
-
-אם היינו בוחרים את $$k$$ כך שיתקיים $$g(x)+k=g(x+h)$$ (ומכך
-$$k=g(x+h)-g(x)$$), היינו מקבלים:
-
-$$
-f(g(x+h))-f(g(x))\,=\,Df(g(x))\cdot(g(x+h)-g(x))+o(g(x+h)-g(x))=\cdots
-$$
-
-ניעזר בהגדרת הדיפרנציאל שוב (הפעם עם הגזירות של $$g$$ ב--$$x$$)
-ונקבל:
-
-$$
-\cdots\,=\,Df(g(x))\cdot(Dg(x)\cdot h+o(h))+o(Dg(x)\cdot h+o(h))
-$$
-
-נשים לב ש--$$Df(g(x))$$ היא העתקה לינארית, ולכן מלינאריות אפשר
-"לפתוח סוגריים":
-
-$$
-\cdots\,=\,Df(g(x))\cdot(Dg(x)\cdot h)+Df(g(x))\cdot o(h)+o(Dg(x)\cdot h+o(h))\,=
+\underset{h\rightarrow0}{lim}\frac{f(g(a+h))-f(g(a))}{h}\,=\,\underset{h\rightarrow0}{lim}\frac{f(g(a+h)-f(g(a))}{g(a+h)-g(a)}\cdot\frac{g(a+h)-g(a)}{h}\,=
 $$
 
 
 
 $$
-=\,(Df(g(x))\circ Dg(x))\cdot h+Df(g(x))\cdot o(h)+o(Dg(x)\cdot h+o(h))
+=\,\underset{h\rightarrow0}{lim}\frac{f(g(a+h)-f(g(a))}{g(a+h)-g(a)}\cdot\underset{h\rightarrow0}{lim}\frac{g(a+h)-g(a)}{h}\,=\,f'(g(a))\cdot g'(a)
 $$
 
-שימו לב: הגורם הראשון הוא מה שאנחנו טוענים להיות הנגזרת של $$f\circ g$$.
-אם נוכיח ש--2 הגורמים האחרים מתאפסים כש--$$h\rightarrow0$$,
-זה יוכיח את הנדרש.
+חשוב לציין שזו גרסה "חפיפניקית"
+של ההוכחה, כי יש בה פגם מתמטי שאי אפשר להבליג עליו: אנחנו כותבים במכנה
+$$g(a+h)-g(a)$$, וביטוי זה בהחלט יכול להתאפס עבור $$h$$ מסוים
+( חשבו על $$g(x)=sin(x)$$ , $$h=2\pi$$). אבל גם בהוכחה הנכונה
+(שמצאו בה טריק שמנצח את הבעיה) העקרון זהה.
+&nbsp;  
+
+&nbsp;  
+ננסה להישען על אותו עקרון -- ניעזר באלגברה בשביל להגיע לשני ביטויים
+נפרדים, כך שאחד יהיה קשור לדיפרנציאל של $$g$$ ב--$$a$$ והשני
+יהיה קשור לדיפרנציאל של $$f$$ ב-$$g(a)$$.
 
 
-שני הגורמים מכילים הפעלה של העתקה לינארית על וקטור שקשור ב--$$h$$.
-נרצה להראות שההפעלה תשאף ל--0 כאשר $$h\rightarrow0$$.
-נשים לב שלכל העתקה לינארית מתקיים:
-
-$$
-\left\Vert T(h)\right\Vert \,=\,\left\Vert T\left(\sum_{i=1}^{n}h_{i}e_{i}\right)\right\Vert \,=\,\left\Vert \sum_{i=1}^{n}h_{i}T(e_{i})\right\Vert \,=\,\sum_{i=1}^{n}\left\Vert h_{i}T(e_{i})\right\Vert \,=
-$$
-
-
-
-$$
-=\,\sum_{i=1}^{n}\left|h_{i}\right|\left\Vert T(e_{i})\right\Vert \,\overset{(*)}{\leq}\,\sum_{i=1}^{n}\left\Vert h\right\Vert \left\Vert T(e_{i})\right\Vert \,=\,\left(\sum_{i=1}^{n}\left\Vert T(e_{i})\right\Vert \right)\left\Vert h\right\Vert \,=\,C\cdot\left\Vert h\right\Vert \,\overset{h\rightarrow0}{\longrightarrow}\,0
-$$
-
-
+אבל להבדיל מההוכחה הקודמת, הפעם לא נשתמש בהגדרת הנגזרת כ"קצב
+שינוי" (דבר שלא אמור להפתיע אתכם). נוכיח את כלל
+השרשרת ע"י הוכחת השוויון: 
 
 $$
-(*)\,\,\,\left|h_{i}\right|=\sqrt{h_{i}^{2}}\leq\sqrt{h_{1}^{2}+\cdots+h_{n}^{2}}=\left\Vert h\right\Vert 
+\underset{h\rightarrow0}{lim}\frac{f(g(a+h))-f(g(a))-ML(h)}{\left\Vert h\right\Vert }=0
 $$
 
-כאשר $$C$$ הוא קבוע כלשהו שתלוי ב--$$T$$. מתכונות הנורמה ומרציפות
-הנורמה, הביטוי $$\left\Vert T(h)\right\Vert \overset{h\rightarrow0}{\longrightarrow}0$$
-גורר $$T(h)\overset{h\rightarrow0}{\longrightarrow}0$$, לכן כאשר
-$$h\rightarrow0$$ נוכל להסיק $$T(h)\overset{h\rightarrow0}{\longrightarrow}0$$.
+כאשר $$M=Df(g(a))$$, $$L=Dg(a)$$. אגב, זכרו להמשך ש-$$M,L$$
+מקיימות את התכונות של העתקות לינאריות.
+&nbsp;  
 
 
-מבלי להיכנס לדקויות ולהגדרה הפורמלית של $$o(\,*\,)$$, אפשר להשתכנע
-ששני הגורמים מקודם מתאפסים כנדרש.
+
+ועכשיו למשחקים האלגבריים:
+&nbsp;  
+
+
+
+
+
+$$
+(1)\,\,g(a+h)\,=\,{\color{blue}g(a)}+g(a+h){\color{red}-g(a)}
+$$
+
+
+&nbsp;  
+
+
+$$
+-ML(h)=-M\left(L(h)\right)\,=\,{\color{purple}{\color{red}-M\left(g(a+h)-g(a)\right)}{\color{blue}\,+\,M\left(g(a+h)-g(a)\right)}}-M\left(L(h)\right)\,=
+$$
+
+
+
+$$
+=\,-M\left(g(a+h)-g(a)\right)+M\left(g(a+h)-g(a)-L(h)\right)
+$$
+
+
+
+$$
+\Longrightarrow\,\,\,(2)\,\,\,\frac{-ML(h)}{\left\Vert h\right\Vert }\,=\,\frac{-M\left(g(a+h)-g(a)\right)}{\left\Vert h\right\Vert }+M\left(\frac{g(a+h)-g(a)-L(h)}{\left\Vert h\right\Vert }\right)
+$$
+
+
+&nbsp;  
+
+
+
+$$
+\frac{f(g(a+h))-f(g(a))-ML(h)}{\left\Vert h\right\Vert }\,\,=\,\,\frac{f(g(a+h))-f(g(a))}{\left\Vert h\right\Vert }+\frac{-ML(h)}{\left\Vert h\right\Vert }\,\,\overset{(1)}{=}
+$$
+
+
+
+$$
+\overset{(1)}{=}\,\,\frac{\,{\color{violet}f\left(g(a)+g(a+h)-g(a)\right)}-f\left(g(a)\right)}{\left\Vert h\right\Vert }+\frac{-ML(h)}{\left\Vert h\right\Vert }\,\,\overset{(2)}{=}
+$$
+
+
+
+$$
+\overset{(2)}{=}\,\,\frac{f\left(g(a)+g(a+h)-g(a)\right)-f\left(g(a)\right)}{\left\Vert h\right\Vert }{\color{violet}+\frac{-M\left(g(a+h)-g(a)\right)}{\left\Vert h\right\Vert }}{\color{brown}{\color{violet}+M\left(\frac{g(a+h)-g(a)-L(h)}{\left\Vert h\right\Vert }\right)}}\,\,=
+$$
+
+
+
+$$
+\overset{(k:=g(a+h)-g(a))}{=}\,\,\frac{f\left(g(a)+k\right)-f\left(g(a)\right)}{\left\Vert h\right\Vert }+\frac{-M(k)}{\left\Vert h\right\Vert }+M\left(\frac{g(a+h)-g(a)-L(h)}{\left\Vert h\right\Vert }\right)\,\,=
+$$
+
+
+
+$$
+=\,\,{\color{teal}\frac{f\left(g(a)+k\right)-f\left(g(a)\right)-M\left(k\right)}{\left\Vert h\right\Vert }}+{\color{orange}M\left(\frac{g(a+h)-g(a)-L(h)}{\left\Vert h\right\Vert }\right)}
+$$
+
+
+&nbsp;  
+
+
+
+באגף שמאל הביטוי המקורי, באגף ימין 2 חלקים -- כל חלק
+מזכיר את הגדרת הדיפרנציאל (אחד עבור $$g$$ בנקודה $$a$$ והשני
+עבור $$f$$ בנקודה $$g(a)$$).
+&nbsp;  
+
+&nbsp;  
+רצינו להוכיח שהביטוי המקורי מתאפס כש-$$h$$ שואף ל-0.
+נראה זאת באמצעות 2 החלקים באגף ימין:
+
+
+(-) החלק הכתום: $$L$$ הוא הדיפרנציאל של $$g$$ ב-$$a$$, לכן
+מהגדרת הדיפרנציאל הביטוי בתוך הסוגריים מתאפס כאשר $$h\rightarrow0$$.
+בגלל ש-$$M$$ העתקה לינארית, הביטוי כולו שואף לאפס.
+
+
+(-) החלק הירוק: מהגדרת $$k$$ (זוכרים שם בסוגריים הקטנות?) ומרציפות
+$$g$$ סביב $$a$$ (שמתקיימת לפי הדיפרנציאביליות ב-$$a$$),
+אם $$h\rightarrow0$$ אז גם $$k\rightarrow0$$. נטפל רגע בביטוי
+עצמו:
+
+$$
+\underset{h\rightarrow0}{lim}\frac{f\left(g(a)+k\right)-f\left(g(a)\right)-M(k)}{\left\Vert h\right\Vert }\,\,=\,\,\underset{h\rightarrow0}{lim}\frac{f\left(g(a)+k\right)-f\left(g(a)\right)-M(k)}{\left\Vert k\right\Vert }\cdot\frac{1}{\left\Vert h\right\Vert }\left\Vert k\right\Vert \,\,=\,\,
+$$
+
+
+
+$$
+=\,\,\underset{h\rightarrow0}{lim}\frac{f\left(g(a)+k\right)-f\left(g(a)\right)-M(k)}{\left\Vert k\right\Vert }\cdot\left\Vert \frac{k}{||h||}\right\Vert \,\,=\,\,\underset{h\rightarrow0}{lim}\frac{f\left(g(a)+k\right)-f\left(g(a)\right)-M(k)}{\left\Vert k\right\Vert }\cdot\underset{h\rightarrow0}{lim}\left\Vert \frac{g(a+h)-g(a)}{\left\Vert h\right\Vert }\right\Vert 
+$$
+
+
+&nbsp;  
+
+
+
+הגורם השמאלי שואף ל-0 מהגדרת הדיפרנציאל $$M=Df(g(a))$$).
+נותר להראות שהגורם הימני חסום, ובזה נסיים:
+
+$$
+\underset{h\rightarrow0}{lim}\left\Vert \frac{g(a+h)-g(a)}{\left\Vert h\right\Vert }\right\Vert \,\,\overset{\text{המרונה תופיצר}}{=}\,\,\left\Vert \underset{h\rightarrow0}{lim}\frac{g(a+h)-g(a)}{\left\Vert h\right\Vert }\right\Vert \,\,\overset{\text{לאיצנרפיד תרדגה}}{=}\,\,\left\Vert \underset{h\rightarrow0}{lim}\frac{L(h)+o(\left\Vert h\right\Vert )}{\left\Vert h\right\Vert }\right\Vert \,\,=
+$$
+
+
+
+$$
+=\,\,\left\Vert \underset{h\rightarrow0}{lim}\frac{L(h)}{\left\Vert h\right\Vert }+\underset{h\rightarrow0}{lim}\frac{o(\left\Vert h\right\Vert )}{\left\Vert h\right\Vert }\right\Vert \,\,=\,\,\left\Vert \underset{h\rightarrow0}{lim}L\left(\frac{h}{\left\Vert h\right\Vert }\right)+\underset{h\rightarrow0}{lim}\frac{o(\left\Vert h\right\Vert )}{\left\Vert h\right\Vert }\right\Vert \,\,=\,\,\left\Vert \underset{h\rightarrow0}{lim}L\left(\frac{h}{\left\Vert h\right\Vert }\right)+0\right\Vert 
+$$
+
+@@@@@@@@@@@ בעיה - איך מצדיקים שהביטוי הזה חסום? איך מתעסקים עם הגבול
+שנותר שם? @@@@@@@@@@@@@@
+&nbsp;  
+
+&nbsp;  
+
 
 
 
